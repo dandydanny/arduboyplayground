@@ -16,6 +16,7 @@ int xDirection;
 int yDirection;
 String countString;
 int countStringLength;
+int xOffset = 0;
 
 // This function runs once in your game.
 // use it for anything that needs to be set only once in your game.
@@ -37,10 +38,10 @@ void loop() {
   //  arduboy.clear();
 
   // reverse direction if x or y hits boundary
-  if (x == 127) {
+  if (x == 127 - xOffset) { // account for 5*num_of_chars string dimension so entire string is always shown
     xDirection = -1;
   }
-  if (y == 63) {
+  if (y == 63 - 7) { // account for 7 of 5x7 character dimension
    yDirection = -1;
   }
   if (x == 0) {
@@ -55,12 +56,13 @@ void loop() {
   String countString = String(count);
   countStringLength = countString.length();
   arduboy.print(countStringLength);
+
+  // calculate available x position based on string length
+  xOffset = (countStringLength * 5);
   
   // set cursor position
   arduboy.setCursor(x, y);
 
-  
-  
   // writing counter to display
   arduboy.print(count);
   count = count + 1;
