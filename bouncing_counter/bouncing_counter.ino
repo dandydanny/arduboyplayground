@@ -14,6 +14,8 @@ int x;
 int y;
 int xDirection;
 int yDirection;
+String countString;
+int countStringLength;
 
 // This function runs once in your game.
 // use it for anything that needs to be set only once in your game.
@@ -48,8 +50,16 @@ void loop() {
     yDirection = 1;
   }
 
+  // debug: find length of count and print it out on upper left corner of OLED
+  arduboy.setCursor(0,0);
+  String countString = String(count);
+  countStringLength = countString.length();
+  arduboy.print(countStringLength);
+  
   // set cursor position
   arduboy.setCursor(x, y);
+
+  
   
   // writing counter to display
   arduboy.print(count);
