@@ -35,7 +35,7 @@ void loop() {
     return;
 
   // first we clear our screen to black
-  //  arduboy.clear();
+//    arduboy.clear();
 
   // reverse direction if x or y hits boundary
   if (x == 127 - xOffset) { // account for 5*num_of_chars string dimension so entire string is always shown
@@ -55,7 +55,7 @@ void loop() {
   arduboy.setCursor(0,0);
   String countString = String(count);
   countStringLength = countString.length();
-  arduboy.print(countStringLength);
+//  arduboy.print(countStringLength);
 
   // calculate available x position based on string length
   xOffset = (countStringLength * 5);
